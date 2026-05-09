@@ -1,0 +1,29 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const { title, description, lastUpdated } = Astro.props.frontmatter;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description ?? ''} />
+		<style>
+			.last-updated {
+				color: rgb(var(--gray));
+				margin-top: -0.5rem;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>{title}</h1>
+			{lastUpdated && <p class="last-updated">Last updated: {lastUpdated}</p>}
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>
