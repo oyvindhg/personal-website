@@ -4,7 +4,9 @@ import HeaderLink from './HeaderLink.astro';
 
 <header>
 	<nav>
-		<h2><a href="/">Home</a></h2>
+		<h2>
+			<HeaderLink href="/">Home</HeaderLink>
+		</h2>
 		<div class="internal-links">
 			<HeaderLink href="/things">Things</HeaderLink>
 			<HeaderLink href="/now">Now</HeaderLink>
@@ -46,7 +48,7 @@ import HeaderLink from './HeaderLink.astro';
 	}
 
 	nav a {
-		padding: 1em 0;
+		padding: 1em 0 0.4em;
 		color: var(--black);
 		border-bottom: 4px solid transparent;
 		text-decoration: none;
