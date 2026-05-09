@@ -1,15 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-
-const posts = (await getCollection('blog'))
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.slice(0, 3);
-
 ---
 
 <!doctype html>
@@ -20,12 +13,11 @@ const posts = (await getCollection('blog'))
 			.intro {
 				margin-bottom: 2.5rem;
 			}
+
 			.intro h1 {
 				margin-bottom: 0.5rem;
 			}
-				.recent h2 {
-				margin-bottom: 1.5rem;
-			}
+
 			.post-list {
 				list-style: none;
 				padding: 0;
@@ -34,25 +26,55 @@ const posts = (await getCollection('blog'))
 				flex-direction: column;
 				gap: 1.25rem;
 			}
+
 			.post-list a {
 				text-decoration: none;
 			}
+
 			.post-title {
 				margin: 0 0 0.2rem;
 				color: rgb(var(--black));
 				font-size: 1.1rem;
 				line-height: 1.3;
 			}
+
 			.post-list a:hover .post-title {
 				color: var(--accent);
 			}
+
 			.post-date {
 				margin: 0;
 				color: rgb(var(--gray));
 				font-size: 0.9rem;
 			}
+
 			.all-posts {
 				margin-top: 1.5rem;
+				font-size: 0.95rem;
+			}
+
+			.card {
+				border: 1px solid rgb(var(--gray-light));
+				border-radius: 8px;
+				padding: 1.5rem;
+				text-decoration: none;
+				display: inline-block;
+				transition: border-color 0.2s ease;
+			}
+
+			.card:hover {
+				border-color: var(--accent);
+			}
+
+			.card h2 {
+				margin: 0 0 0.5rem;
+				font-size: 1.2rem;
+				color: rgb(var(--black));
+			}
+
+			.card p {
+				margin: 0;
+				color: rgb(var(--gray));
 				font-size: 0.95rem;
 			}
 		</style>
@@ -61,25 +83,30 @@ const posts = (await getCollection('blog'))
 		<Header />
 		<main>
 			<section class="intro">
-				<h1>Hello :)</h1>
+				<h1>Hei, hei</h1>
 				<p>
-					I am a backend engineer living in Tokyo. This is my attempt to write about life, software, thoughts, and whatever else I feel like.
+					I'm Øyvind, a Norwegian backend engineer living in Tokyo. I want this site to
+					be a little creative outlet where I can make some cool stuff, and
+					maybe share thoughts about life, software, or whatever else I feel
+					like. Read more about me
+					<a href={`/about`}>here</a>, or check out what I'm up to
+					<a href={`/now`}>now</a>.
 				</p>
-				</section>
-
-			<section class="recent">
-				<h2>Most recent</h2>
-				<ul class="post-list">
-					{posts.map((post) => (
-						<li>
-							<a href={`/writing/${post.id}/`}>
-								<p class="post-title">{post.data.title}</p>
-								<p class="post-date"><FormattedDate date={post.data.pubDate} /></p>
-							</a>
-						</li>
-					))}
-				</ul>
-				<p class="all-posts"><a href="/writing">All posts →</a></p>
+			</section>
+			<section>
+				<p>Here is my first visualization:</p>
+				<a class="card" href="/things/japan">
+					<h2>Japan</h2>
+					<p>Places I've been to across Japan, with photos.</p>
+				</a>
+			</section>
+			<section>
+				<p>And I've also written a note:</p>
+				<a class="post-list" href="/notes/markdown-style-guide">
+					<p class="post-title">Your post title here</p>
+					<p class="post-date">January 1, 2026</p>
+				</a>
+				<p class="all-posts"><a href="/notes">All notes →</a></p>
 			</section>
 		</main>
 		<Footer />

@@ -1,0 +1,89 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const things = [
+	{
+		title: 'Japan',
+		description:
+			"I want to visit all the prefectures in Japan. I'll track it here!",
+		href: '/things/japan',
+	},
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Things"
+			description="Some visualizations and other stuff I think is cool"
+		/>
+		<style>
+			h1 {
+				margin-bottom: 0.25rem;
+			}
+
+			.description {
+				margin-bottom: 3rem;
+			}
+
+			.cards {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+				gap: 1.5rem;
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			.card {
+				border: 1px solid rgb(var(--gray-light));
+				border-radius: 8px;
+				padding: 1.5rem;
+				text-decoration: none;
+				display: block;
+				transition: border-color 0.2s ease;
+			}
+
+			.card:hover {
+				border-color: var(--accent);
+			}
+
+			.card h2 {
+				margin: 0 0 0.5rem;
+				font-size: 1.2rem;
+				color: rgb(var(--black));
+			}
+
+			.card p {
+				margin: 0;
+				color: rgb(var(--gray));
+				font-size: 0.95rem;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Things</h1>
+			<p class="description">
+				Some visualizations and other stuff I think is cool
+			</p>
+			<ul class="cards">
+				{
+					things.map(({ title, description, href }) => (
+						<li>
+							<a class="card" href={href}>
+								<h2>{title}</h2>
+								<p>{description}</p>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</main>
+		<Footer />
+	</body>
+</html>

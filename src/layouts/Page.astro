@@ -21,7 +21,7 @@ const { title, description, lastUpdated } = Astro.props.frontmatter;
 		<Header />
 		<main>
 			<h1>{title}</h1>
-			{lastUpdated && <p class="last-updated">Last updated: {lastUpdated}</p>}
+			{lastUpdated && <p class="last-updated">Updated on {lastUpdated}</p>}
 			<slot />
 		</main>
 		<Footer />

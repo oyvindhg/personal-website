@@ -1,15 +1,15 @@
 ---
-import { FIRST_NAME } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 ---
 
 <header>
 	<nav>
-		<h2><a href="/">{FIRST_NAME}</a></h2>
+		<h2><a href="/">Home</a></h2>
 		<div class="internal-links">
-			<HeaderLink href="/about">About</HeaderLink>
-			<HeaderLink href="/writing">Writing</HeaderLink>
+			<HeaderLink href="/things">Things</HeaderLink>
 			<HeaderLink href="/now">Now</HeaderLink>
+			<HeaderLink href="/notes">Notes</HeaderLink>
+			<HeaderLink href="/about">About</HeaderLink>
 		</div>
 	</nav>
 </header>
@@ -20,28 +20,38 @@ import HeaderLink from './HeaderLink.astro';
 		background: var(--bg);
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
 	}
+
 	h2 {
 		margin: 0;
 		font-size: 1em;
 	}
+
 	h2 a,
 	h2 a.active {
 		text-decoration: none;
 	}
+
+	.internal-links {
+		display: flex;
+		gap: 1rem;
+	}
+
 	nav {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		max-width: 1020px;
+		max-width: 720px;
 		width: 100%;
 		margin: 0 auto;
 	}
+
 	nav a {
-		padding: 1em 0.5em;
+		padding: 1em 0;
 		color: var(--black);
 		border-bottom: 4px solid transparent;
 		text-decoration: none;
 	}
+
 	nav a.active {
 		text-decoration: none;
 		border-bottom-color: var(--accent);

@@ -2,5 +2,4 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 export const SITE_TITLE = 'Øyvind Harding Gulbrandsen';
-export const FIRST_NAME = 'Øyvind';
 export const SITE_DESCRIPTION = 'Personal website';
